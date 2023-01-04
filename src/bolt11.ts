@@ -1,4 +1,4 @@
-import * as bech32  from "bech32";
+import * as bech32 from "bech32";
 import { Buffer } from "buffer";
 import BN from 'bn.js'
 
@@ -180,7 +180,7 @@ function featureBitsParser(words) {
   while (bools.length < FEATUREBIT_ORDER.length * 2) {
     bools.push(false)
   }
-  const featureBits = {extra_bits:{}}
+  const featureBits = { extra_bits: {} }
 
   FEATUREBIT_ORDER.forEach((featureName, index) => {
     let status
@@ -240,7 +240,12 @@ function hrpToMillisat(hrpString, outputString) {
 
 // decode will only have extra comments that aren't covered in encode comments.
 // also if anything is hard to read I'll comment.
-function decode(paymentRequest, network?) {
+function decode(paymentRequest: string, network?: any): {
+  paymentRequest: string;
+  sections: any[];
+  readonly expiry: any;
+  readonly route_hints: any[];
+} {
   if (typeof paymentRequest !== 'string')
     throw new Error('Lightning Payment Request must be string')
   if (paymentRequest.slice(0, 2).toLowerCase() !== 'ln')

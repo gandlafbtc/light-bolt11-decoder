@@ -1,11 +1,12 @@
 {
   "name": "@gandlaf21/bolt11-decode",
-  "version": "3.0.0",
+  "version": "3.0.3",
   "description": "",
   "main": "dist/lib/es6/bolt11.js",
   "type": "module",
   "files": [
-    "*.js"
+      "dist",
+      "src"
   ],
   "scripts": {
     "compile": "rm -rf dist/lib && tsc && tsc --build tsconfig.es5.json",
