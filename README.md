@@ -9,11 +9,17 @@ Code derived from [bolt11](https://npmjs.com/package/bolt11), which has the full
 
 ## Installation
 
+```shell
+npm i @gandlaf21/bolt11-decode
 ```
-yarn add light-bolt11-decoder
-```
+###  Usage
 
-## Example Output from `require('light-bolt11-decoder').decode("lnbc...")`
+```javascript
+import { decode } from "@gandlaf21/bolt11-decode";
+
+decode('{invoice}', 'optional: network')
+
+```
 
 ```json
 {

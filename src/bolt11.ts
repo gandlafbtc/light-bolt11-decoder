@@ -1,6 +1,6 @@
-const bech32 = require('bech32')
-const Buffer = require('buffer').Buffer
-const BN = require('bn.js')
+import * as bech32  from "bech32";
+import { Buffer } from "buffer";
+import BN from 'bn.js'
 
 // defaults for encode; default timestamp is current time at call
 const DEFAULTNETWORK = {
@@ -125,7 +125,7 @@ function convert(data, inBits, outBits) {
 }
 
 function wordsToBuffer(words, trim) {
-  let buffer = Buffer.from(convert(words, 5, 8, true))
+  let buffer = Buffer.from(convert(words, 5, 8))
   if (trim && (words.length * 5) % 8 !== 0) {
     buffer = buffer.slice(0, -1)
   }
@@ -180,7 +180,7 @@ function featureBitsParser(words) {
   while (bools.length < FEATUREBIT_ORDER.length * 2) {
     bools.push(false)
   }
-  const featureBits = {}
+  const featureBits = {extra_bits:{}}
 
   FEATUREBIT_ORDER.forEach((featureName, index) => {
     let status
@@ -240,7 +240,7 @@ function hrpToMillisat(hrpString, outputString) {
 
 // decode will only have extra comments that aren't covered in encode comments.
 // also if anything is hard to read I'll comment.
-function decode(paymentRequest, network) {
+function decode(paymentRequest, network?) {
   if (typeof paymentRequest !== 'string')
     throw new Error('Lightning Payment Request must be string')
   if (paymentRequest.slice(0, 2).toLowerCase() !== 'ln')
@@ -414,7 +414,7 @@ function decode(paymentRequest, network) {
   }
 }
 
-module.exports = {
+export {
   decode,
   hrpToMillisat
 }
