@@ -1,6 +1,6 @@
 {
   "name": "@gandlaf21/bolt11-decode",
-  "version": "2.1.1",
+  "version": "3.0.0",
   "description": "",
   "main": "dist/lib/es6/bolt11.js",
   "type": "module",
