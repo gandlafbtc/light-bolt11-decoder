@@ -1,6 +1,6 @@
 import * as bech32 from "bech32";
 import { Buffer } from "buffer";
-import BN from 'bn.js'
+import { BN } from 'bn.js'
 
 // defaults for encode; default timestamp is current time at call
 const DEFAULTNETWORK = {
